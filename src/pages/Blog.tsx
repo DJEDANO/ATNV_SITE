@@ -1,19 +1,36 @@
 import { useState } from 'react';
 import { Calendar, User, Search, ArrowRight, MessageCircle, Heart } from 'lucide-react';
+import NewsletterSection from '../components/NewsletterSection'; 
+
+interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string; 
+  category: string;
+  readTime: string;
+  image: string; 
+  tags: string[];
+  likes: number;
+  comments: number;
+  featured?: boolean;
+}
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
-    { id: 'all', name: 'Tous les articles', count: 15 },
-    { id: 'testimonies', name: 'Témoignages', count: 6 },
-    { id: 'reflections', name: 'Réflexions', count: 4 },
+    { id: 'all', name: 'Tous les articles', count: 6},
+    { id: 'testimonies', name: 'Témoignages', count: 2},
+    { id: 'reflections', name: 'Réflexions', count: 2},
     { id: 'field-reports', name: 'Récits de terrain', count: 3 },
-    { id: 'news', name: 'Actualités', count: 2 }
+    { id: 'news', name: 'Actualités', count: 1}
   ];
 
-  const blogPosts = [
+  const blogPosts: BlogPost[] = [
     {
       id: 1,
       title: "La médiation traditionnelle face aux défis modernes",
@@ -23,7 +40,7 @@ const Blog = () => {
       date: "2025-01-10",
       category: "field-reports",
       readTime: "8 min",
-      image: "src/assets/paix.jpeg",
+      image: "src/assets/paix.jpeg", 
       tags: ["médiation", "tradition", "eau", "communautés"],
       likes: 24,
       comments: 8,
@@ -38,7 +55,7 @@ const Blog = () => {
       date: "2025-01-05",
       category: "testimonies",
       readTime: "6 min",
-      image: "src/assets/atnv.jpeg",
+      image: "src/assets/atnv.jpeg", 
       tags: ["formation", "femmes", "entrepreneuriat", "témoignage"],
       likes: 31,
       comments: 12,
@@ -53,7 +70,7 @@ const Blog = () => {
       date: "2024-12-28",
       category: "reflections",
       readTime: "12 min",
-      image: "src/assets/30ans.jpeg",
+      image: "src/assets/30ans.jpeg", 
       tags: ["histoire", "bilan", "perspectives", "non-violence"],
       likes: 45,
       comments: 15,
@@ -68,7 +85,7 @@ const Blog = () => {
       date: "2024-12-20",
       category: "testimonies",
       readTime: "7 min",
-      image: "src/assets/amb.jpeg",
+      image: "src/assets/amb.jpeg", 
       tags: ["éducation", "jeunes", "écoles", "paix"],
       likes: 38,
       comments: 9,
@@ -83,7 +100,7 @@ const Blog = () => {
       date: "2024-12-15",
       category: "reflections",
       readTime: "10 min",
-      image: "src/assets/non.jpeg",
+      image: "src/assets/non.jpeg", 
       tags: ["philosophie", "non-violence", "Gandhi", "MLK"],
       likes: 29,
       comments: 6,
@@ -98,7 +115,7 @@ const Blog = () => {
       date: "2024-12-10",
       category: "news",
       readTime: "4 min",
-      image: "src/assets/partenariat.JPG",
+      image: "src/assets/partenariat.JPG", 
       tags: ["partenariat", "jeunes", "formation", "media-lab"],
       likes: 22,
       comments: 4,
@@ -114,8 +131,12 @@ const Blog = () => {
     return matchesSearch && matchesCategory;
   });
 
+  // Assurez-vous que featuredPost est bien l'article 'featured' et qu'il n'est pas filtré par la recherche ou catégorie si on est pas en 'all'
   const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  
+  // Les articles réguliers sont ceux qui ne sont PAS l'article en vedette ET qui correspondent aux filtres
+  const regularPosts = filteredPosts.filter(post => post.id !== featuredPost?.id);
+
 
   const getCategoryName = (categoryId: string) => {
     const category = categories.find(cat => cat.id === categoryId);
@@ -224,10 +245,6 @@ const Blog = () => {
                       </div>
                       <span>{featuredPost.readTime}</span>
                     </div>
-                    <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-md font-medium transition-colors inline-flex items-center">
-                      Lire la suite
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -310,23 +327,8 @@ const Blog = () => {
           )}
         </section>
 
-        {/* Newsletter Subscription */}
-        <section className="mt-16 bg-emerald-50 rounded-xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Restez informé</h2>
-          <p className="text-gray-600 mb-6">
-            Abonnez-vous à notre newsletter pour recevoir nos derniers articles et actualités
-          </p>
-          <div className="flex flex-col sm:flex-row max-w-md mx-auto space-y-3 sm:space-y-0 sm:space-x-3">
-            <input
-              type="email"
-              placeholder="Votre adresse email"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-            />
-            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-md font-medium transition-colors">
-              S'abonner
-            </button>
-          </div>
-        </section>
+        {/* Newsletter Subscription Component */}
+        <NewsletterSection />
       </div>
     </div>
   );

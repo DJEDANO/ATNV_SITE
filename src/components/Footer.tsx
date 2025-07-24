@@ -59,7 +59,7 @@ const Footer = () => {
             </ul>
             <div className="mt-4">
               <Link
-                to="/support"
+                to="/"
                 className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded text-sm font-medium transition-colors inline-block"
               >
                 Soutenir nos actions
