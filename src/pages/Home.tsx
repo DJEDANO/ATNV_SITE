@@ -175,7 +175,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="relative overflow-hidden rounded-lg shadow-lg group">
               <img
-                src={formationImage}
+                src={agEleImage}
                 alt="Formation communautaire"
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -188,7 +188,7 @@ const Home = () => {
             </div>
             <div className="relative overflow-hidden rounded-lg shadow-lg group">
               <img
-                src={developImage}
+                src={formationImage}
                 alt="Éducation jeunesse"
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -200,7 +200,7 @@ const Home = () => {
             </div>
             <div className="relative overflow-hidden rounded-lg shadow-lg group">
               <img
-                src={agEleImage}
+                src={developImage}
                 alt="Médiation agricole"
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
