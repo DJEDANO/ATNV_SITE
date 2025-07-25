@@ -289,10 +289,6 @@ const Blog = () => {
                       <User className="h-3 w-3" />
                       <span>{post.author}</span>
                     </div>
-                    <button className="text-emerald-600 hover:text-emerald-700 font-medium text-sm inline-flex items-center">
-                      Lire
-                      <ArrowRight className="ml-1 h-3 w-3" />
-                    </button>
                   </div>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                     <div className="flex space-x-4 text-sm text-gray-500">
