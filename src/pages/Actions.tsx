@@ -1,4 +1,8 @@
 import { Users, GraduationCap, Heart, Mic, Tv} from 'lucide-react';
+import agroImage from '../assets/agro.jpeg';
+import ecoleImage from '../assets/ecole.jpg';
+import paixImage from '../assets/paix.jpeg';
+import medialabImage from '../assets/medialab.jpeg';
 
 const Actions = () => {
   const mainActions = [
@@ -12,7 +16,7 @@ const Actions = () => {
         "Négociation de couloirs de transhumance",
         "Sensibilisation sur les droits fonciers"
       ],
-      image: "src/assets/agro.jpeg",
+      image: agroImage,
       impact: "500+ conflits résolus, 50 médiateurs formés"
     },
     {
@@ -25,7 +29,7 @@ const Actions = () => {
         "Concours de création artistique sur la non-violence",
         "Théâtre forum sur la résolution des conflits"
       ],
-      image: "src/assets/ecole.jpg",
+      image: ecoleImage,
       impact: "80 écoles partenaires, 3000+ élèves sensibilisés"
     },
     {
@@ -38,7 +42,7 @@ const Actions = () => {
         "Groupes de parole pour femmes victimes de violence",
         "Médiation familiale et communautaire"
       ],
-      image: "src/assets/paix.jpeg",
+      image: paixImage,
       impact: "200+ familles accompagnées, 30 leaders formés"
     },
   ];
@@ -63,7 +67,7 @@ const Actions = () => {
         description: "Clips vidéo, chansons et spectacles pour sensibiliser les jeunes"
       }
     ],
-    image: "src/assets/medialab.jpeg"
+    image: medialabImage,
   };
 
  
